@@ -1,0 +1,34 @@
+body {
+	font-family: monospace;
+	background-color: #eee; 
+	margin: 40px;
+}
+
+h1, h3 {
+	font-weight: normal;
+}
+
+a:link {
+	color: #CE2029; 
+	text-decoration: none;
+}
+
+a:visited {
+	color: #CE2029; 
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+textarea {
+	font-family: monospace;
+}
+
+input {
+	font-family: monospace;
+}
+pre {
+	font-family: monospace;
+}

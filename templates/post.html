@@ -1,0 +1,80 @@
+<html>
+
+<head>
+	<title>{{ webmaster.name }}</title>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename="styles/frontpage.css") }}>
+</head>
+
+<body>
+<center>
+<h1>{{ webmaster.name }}</h1>
+<h3>{{ post.title }}</h3>
+{% set image = False %}
+
+	{% for line in post.content.split("\r") %}
+		{% if line[0] == ">" %}
+
+			<p style="color: #4e9a06">{{ line }}</p>
+
+		{% elif line[0] == ":" and not image %}
+
+			{% set image = True %}
+
+			<br></br>
+			<img src="{{ line[1:] }}" alt="Image">
+
+		{% else %}
+
+			<p>{{ line }}</p>
+
+		{% endif %}
+
+	{% endfor %}
+
+{{ webmaster.post_split }}
+
+{% for comment in post.comments %}
+
+	{% set image = False %}
+
+	{% for line in comment.content.split("\r") %}
+		{% if line[0] == ">" %}
+
+			<p style="color: #4e9a06">{{ line }}</p>
+
+		{% elif line[0] == ":" and not image %}
+
+			{% set image = True %}
+
+			<br></br>
+			<img src="{{ line[1:] }}" alt="Image">
+
+		{% else %}
+
+			<p>{{ line }}</p>
+
+		{% endif %}
+
+	{% endfor %}
+
+	<p>{{ webmaster.comment_split }}</p>
+{% endfor %}
+
+<form action = {{ post.url }} method = "post">
+	<textarea name="comment" cols="60" rows="6" maxlength="250"></textarea>
+	
+	<br></br>
+
+	<pre>{{ captcha.text }}</pre>
+	<p>enter captcha</p>
+	<input type = "text" name = "captcha">
+	<br></br>
+	<br></br>
+	<input type = "submit" value = "submit">
+</form>
+
+<a href="/">Return</a>
+</center>
+
+</body>
+</html>

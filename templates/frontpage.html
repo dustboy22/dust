@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<title>{{ webmaster.name }}</title>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename="styles/frontpage.css") }}>
+</head>
+
+<body>
+	<center>
+
+	<h1>{{ webmaster.name }}</h1>
+	<p>Nothing is static. Even the Mona Lisa is falling apart.</p>
+	<a href="{{ url_for("new_post") }}" >post</a> | <a href="{{ url_for("help") }}" >help</a> | <a href="" >source</a>
+
+	{% for post in webmaster.posts[::-1] %}
+		<p>{{ webmaster.post_split }}</p>
+		
+		<a href={{ post.url }}>#{{ post.post_id }} {{ post.title }}</a>
+
+		{% set image = False %}
+
+		{% for line in post.content.split("\r") %}
+			{% if line[0] == ">" %}
+
+				<p style="color: #4e9a06">{{ line }}</p>
+
+			{% elif line[0] == ":" and not image %}
+
+				{% set image = True %}
+
+				<br></br>
+				<img src="{{ line[1:] }}" alt="Image">
+
+			{% else %}
+
+				<p>{{ line }}</p>
+
+			{% endif %}
+
+		{% endfor %}
+
+	{% endfor %}
+
+	</center>
+
+</body>
+</html>

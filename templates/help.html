@@ -1,0 +1,32 @@
+<html>
+
+<head>
+	<title>{{ webmaster.name }}</title>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename="styles/frontpage.css") }}>
+</head>
+
+<body>
+	<center>
+
+	<h1>{{ webmaster.name }}</h1>
+	<p>Nothing is static. Even the Mona Lisa is falling apart.</p>
+	<br></br>
+	<p>Welcome to dust. This is an anonymous forum. In order to post new content</p>
+	<p>simply hit the <a href="{{ url_for("new_post") }}">post</a> link on the frontpage. The first line of your post</p>
+	<p>becomes the title. You can add an image to your post by typing ":" and</p>
+	<p>an image url. You can have one image in a post. You can greentext with ">".</p>
+	<br></br>
+	<p>New posts are automatically filtered to the top of the frontpage. When a post</p>
+	<p>reaches postion 101, it is deleted.</p>
+	<br></br>
+	<p>Check out the source code here.</p>
+
+	<br></br>
+
+	<p>site by dustboy@protonmail.com</p>
+
+	<a href="/">Return</a>
+
+	</center>
+</body>
+</html>
