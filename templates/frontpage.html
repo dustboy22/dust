@@ -10,7 +10,7 @@
 
 	<h1>{{ webmaster.name }}</h1>
 	<p>Nothing is static. Even the Mona Lisa is falling apart.</p>
-	<a href="{{ url_for("new_post") }}" >post</a> | <a href="{{ url_for("help") }}" >help</a> | <a href="" >source</a>
+	<a href="{{ url_for("new_post") }}" >post</a> | <a href="{{ url_for("help") }}" >help</a> | <a href="https://github.com/dustboy22/dust/tree/master" >source</a>
 
 	{% for post in webmaster.posts[::-1] %}
 		<p>{{ webmaster.post_split }}</p>
